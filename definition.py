@@ -111,7 +111,7 @@ def extract_definition(xmlroot):
                 'metadata': {
                     'visible': True,
                     'manfacturer': 'Dagoma',
-                    #'author': '',
+                    'author': 'Clément Bœsch, Delphin PETER',
                     'category': 'Other',
                     'platform': definition_id + '_platform.stl',
                     'file_formats': 'text/x-gcode',
