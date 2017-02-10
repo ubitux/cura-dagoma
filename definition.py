@@ -59,11 +59,9 @@ def _extract_fields(dst, section, fields):
         dagoma_field = fields_map.get(field, field)
         dst[field] = _get_default_dict(section, dagoma_field, field_type)
 
-def extract_definition(xml_filename):
+def extract_definition(doc):
     bool_eval = lambda x: eval(x)
     str_lower = lambda x: str(x).lower()
-
-    doc = ET.parse(xml_filename)
 
     definition_data = None
     o = {}
@@ -186,7 +184,8 @@ def extract_definition(xml_filename):
     return definition_data
 
 def _write_definition(xml_filename, output_filename):
-    definition_data = extract_definition(xml_filename)
+    xmlroot = ET.parse(xml_filename)
+    definition_data = extract_definition(xmlroot)
     json_data = json.dumps(definition_data, indent=4) + '\n'
     open(output_filename, 'w').write(json_data)
 

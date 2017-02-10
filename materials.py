@@ -31,11 +31,10 @@ def _write_xml(filename, brand, diameter, temp, material, color, density):
     print(filename)
     open(filename, 'w').write(xml_out)
 
-def extract_materials(xml_filename):
+def extract_materials(xmlroot):
     materials_data = {}
 
-    root = ET.parse(xml_filename)
-    filaments = root.find('Bloc_Filaments')
+    filaments = xmlroot.find('Bloc_Filaments')
     for filament in filaments.findall('Filament'):
 
         name = filament.attrib['name']
@@ -72,7 +71,8 @@ def extract_materials(xml_filename):
     return materials_data
 
 def _write_materials(xml_filename, out_dir):
-    materials_data = extract_materials(xml_filename)
+    xmlroot = ET.parse(xml_filename)
+    materials_data = extract_materials(xmlroot)
     for material_id, data in materials_data.items():
         filename = material_id + '.xml.fdm_material'
         filename = os.path.join(out_dir, filename)

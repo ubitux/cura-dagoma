@@ -12,13 +12,12 @@ def _write_ini(out, data):
             out.write('%s = %s\n' % kv)
         out.write('\n')
 
-def extract_qualities(xml_filename):
+def extract_qualities(xmlroot):
     qualities_data = {}
 
-    definition_data = extract_definition(xml_filename)
+    definition_data = extract_definition(xmlroot)
 
-    root = ET.parse(xml_filename)
-    qualities = root.find('Bloc_Precision')
+    qualities = xmlroot.find('Bloc_Precision')
     for quality in qualities.findall('Precision'):
 
         name = quality.attrib['name']
@@ -68,8 +67,9 @@ def extract_qualities(xml_filename):
 
 def _write_qualities(xml_filename, out_dir):
 
-    qualities_data  = extract_qualities(xml_filename)
-    materials_data  = extract_materials(xml_filename)
+    xmlroot = ET.parse(xml_filename)
+    qualities_data  = extract_qualities(xmlroot)
+    materials_data  = extract_materials(xmlroot)
 
     for material_id, material_data in materials_data.items():
 
