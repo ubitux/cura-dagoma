@@ -75,6 +75,7 @@ def extract_definition(xmlroot):
 
         machine_fields = (
                 ('machine_name',            str),
+                # machine_type                             -> TODO
                 ('machine_width',           int),
                 ('machine_depth',           int),
                 ('machine_height',          int),
