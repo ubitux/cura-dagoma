@@ -99,6 +99,9 @@
             "default_value": 50,
             "maximum_value": "100"
         },
+        "cool_lift_head": {
+            "default_value": false
+        },
         "skin_overlap": {
             "default_value": 25
         },
