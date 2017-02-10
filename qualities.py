@@ -5,12 +5,14 @@ from xml.etree import ElementTree as ET
 from materials import extract_materials
 from definition import extract_definition
 
-def _write_ini(out, data):
+def _get_ini(data):
+    lines = []
     for section_name, section_data in data.items():
-        out.write('[%s]\n' % section_name)
+        lines.append('[%s]' % section_name)
         for kv in section_data.items():
-            out.write('%s = %s\n' % kv)
-        out.write('\n')
+            lines.append('%s = %s' % kv)
+        lines.append('')
+    return '\n'.join(lines)
 
 def extract_qualities(xmlroot):
     qualities_data = {}
@@ -87,8 +89,7 @@ def _write_qualities(xml_filename, out_dir):
             filename = '%s_%s_%s.inst.cfg' % (printer, material_id, quality_id)
             filename = os.path.join(out_dir, filename)
             print(filename)
-            outf = open(filename, 'w')
-            _write_ini(outf, quality_data)
+            open(filename, 'w').write(_get_ini(quality_data))
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
