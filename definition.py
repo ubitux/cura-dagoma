@@ -59,7 +59,7 @@ def _extract_fields(dst, section, fields):
         dagoma_field = fields_map.get(field, field)
         dst[field] = _get_default_dict(section, dagoma_field, field_type)
 
-def extract_definition(doc):
+def extract_definition(xmlroot):
     bool_eval = lambda x: eval(x)
     str_lower = lambda x: str(x).lower()
 
@@ -68,7 +68,7 @@ def extract_definition(doc):
 
     # Machine fields
     for section_name in ('Discovery200', 'DiscoEasy200'):
-        section = doc.find(section_name)
+        section = xmlroot.find(section_name)
         if not section:
             continue
 
@@ -122,12 +122,12 @@ def extract_definition(doc):
     assert definition_data is not None
 
     # Gcode
-    gcode = doc.find('GCODE')
+    gcode = xmlroot.find('GCODE')
     o['machine_start_gcode'] = _get_gcode_field(gcode, 'Gstart')
     o['machine_end_gcode']   = _get_gcode_field(gcode, 'Gend')
 
     # Config Adv
-    section = doc.find('Config_Adv')
+    section = xmlroot.find('Config_Adv')
     config_adv_fields = (
             ('retraction_speed',    int),
             ('retraction_amount',   float),
@@ -140,7 +140,7 @@ def extract_definition(doc):
     _extract_fields(o, section, config_adv_fields)
 
     # Config Expert
-    section = doc.find('Config_Expert')
+    section = xmlroot.find('Config_Expert')
     config_expert_fields = (
             ('retraction_min_travel',           float),
             # retraction_combing                            -> TODO: changed type from bool to string
