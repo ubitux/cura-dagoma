@@ -136,7 +136,7 @@ def extract_definition(xmlroot):
             #bottom_thickness                               -> TODO: belongs in qualities?
             #layer0_width_factor                            -> TODO: belongs in qualities?
             #object_sink                                    -> TODO: belongs in qualities?
-            #cool_min_layer_time                            -> TODO: belongs in qualities?
+            ('cool_min_layer_time', int),
             ('cool_fan_enabled',    bool_eval),             # fan_enabled
     )
     _extract_fields(o, section, config_adv_fields)
