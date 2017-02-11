@@ -103,6 +103,9 @@
             "default_value": 50,
             "maximum_value": "100"
         },
+        "cool_min_speed": {
+            "default_value": 20
+        },
         "cool_lift_head": {
             "default_value": false
         },

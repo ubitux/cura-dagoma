@@ -45,6 +45,7 @@ def _extract_fields(dst, section, fields):
             'cool_fan_full_at_height':          'fan_full_height',
             'cool_fan_speed':                   'fan_speed',
             'cool_lift_head':                   'cool_head_lift',
+            'cool_min_speed':                   'cool_min_feedrate',
             'skin_overlap':                     'fill_overlap',
             'support_pattern':                  'support_type',
             'support_infill_rate':              'support_fill_rate',
@@ -154,7 +155,7 @@ def extract_definition(xmlroot):
             ('cool_fan_full_at_height',         float),     # fan_full_height
             ('cool_fan_speed',                  int),       # fan_speed
             # fan_speed_max                                 -> see cool_fan_speed/maximum_value below
-            # cool_min_feedrate                             -> TODO: ?
+            ('cool_min_speed',                  int),       # cool_min_feedrate
             ('cool_lift_head',                  bool_eval), # cool_head_lift
             # solid_top                                     -> TODO: top_thickness in qualities?
             # solid_bottom                                  -> TODO: bottom_thickness in qualities?
