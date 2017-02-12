@@ -46,6 +46,7 @@ def _extract_fields(dst, section, fields):
             'cool_fan_speed':                   'fan_speed',
             'cool_lift_head':                   'cool_head_lift',
             'cool_min_speed':                   'cool_min_feedrate',
+            'skirt_brim_minimal_length':        'skirt_minimal_length',
             'skin_overlap':                     'fill_overlap',
             'support_pattern':                  'support_type',
             'support_infill_rate':              'support_fill_rate',
@@ -151,7 +152,7 @@ def extract_definition(xmlroot):
             ('retraction_hop',                  int),       # XXX: doesn't retraction_hop_enabled needs to be set?
             ('skirt_line_count',                int),
             ('skirt_gap',                       int),
-            ('skirt_minimal_length',            int),
+            ('skirt_brim_minimal_length',       int),       # skirt_minimal_length
             ('cool_fan_full_at_height',         float),     # fan_full_height
             ('cool_fan_speed',                  int),       # fan_speed
             # fan_speed_max                                 -> see cool_fan_speed/maximum_value below

@@ -93,7 +93,7 @@
         "skirt_gap": {
             "default_value": 3
         },
-        "skirt_minimal_length": {
+        "skirt_brim_minimal_length": {
             "default_value": 150
         },
         "cool_fan_full_at_height": {
