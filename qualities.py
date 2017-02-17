@@ -30,21 +30,27 @@ def extract_qualities(xmlroot):
         name_id = name_remap.get(name_id, name_id)
 
         fields_map = {
-                'speed_print':  'print_speed',
-                'speed_travel': 'travel_speed',
-                'speed_infill': 'infill_speed',
+                'speed_print':      'print_speed',
+                'speed_travel':     'travel_speed',
+                'speed_infill':     'infill_speed',
+                'speed_layer_0':    'bottom_layer_speed',
+                'top_thickness':    'solid_layer_thickness',
+                'bottom_thickness': 'solid_layer_thickness',
+                'speed_wall_0':     'inset0_speed',
+                'speed_wall_x':     'insetx_speed',
         }
         values_fields = (
                 ('layer_height',        float),
-                #solid_layer_thickness                  -> TODO
+                ('top_thickness',       float),         # solid_layer_thickness
+                ('bottom_thickness',    float),         # solid_layer_thickness
                 ('wall_thickness',      float),
                 ('speed_print',         int),           # print_speed
                 #temp_preci                             -> TODO
                 ('speed_travel',        int),           # travel_speed
-                #bottom_layer_speed                     -> TODO
+                ('speed_layer_0',       int),           # bottom_layer_speed
                 ('speed_infill',        int),           # infill_speed
-                #inset0_speed                           -> TODO
-                #insetx_speed                           -> TODO
+                ('speed_wall_0',        int),           # inset0_speed
+                ('speed_wall_x',        int),           # insetx_speed
         )
 
         values = {}
