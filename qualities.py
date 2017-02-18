@@ -51,6 +51,13 @@ def extract_qualities(xmlroot):
                 ('speed_wall_x',            int),           # insetx_speed
         )
 
+        # Make sure it's correct to use top_bottom_thickness instead of
+        # solid_layer_thickness
+        cfg_expert = xmlroot.find('Config_Expert')
+        solid_top    = eval(cfg_expert.find('solid_top').text)
+        solid_bottom = eval(cfg_expert.find('solid_bottom').text)
+        assert solid_top is True and solid_bottom is True
+
         values = {}
         for field, field_type in values_fields:
             dagoma_field = fields_map.get(field, field)
