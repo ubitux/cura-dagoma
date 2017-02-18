@@ -34,15 +34,13 @@ def extract_qualities(xmlroot):
                 'speed_travel':     'travel_speed',
                 'speed_infill':     'infill_speed',
                 'speed_layer_0':    'bottom_layer_speed',
-                'top_thickness':    'solid_layer_thickness',
-                'bottom_thickness': 'solid_layer_thickness',
+                'top_bottom_thickness': 'solid_layer_thickness',
                 'speed_wall_0':     'inset0_speed',
                 'speed_wall_x':     'insetx_speed',
         }
         values_fields = (
                 ('layer_height',        float),
-                ('top_thickness',       float),         # solid_layer_thickness
-                ('bottom_thickness',    float),         # solid_layer_thickness
+                ('top_bottom_thickness',float),         # solid_layer_thickness
                 ('wall_thickness',      float),
                 ('speed_print',         int),           # print_speed
                 #temp_preci                             -> TODO
