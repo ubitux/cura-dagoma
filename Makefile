@@ -1,5 +1,5 @@
 PYTHON ?= python
-PREFIX ?= $(HOME)/.local
+PREFIX ?= $(HOME)/.local/share/cura
 
 PLATFORM = discoeasy200
 
@@ -36,7 +36,7 @@ $(O_DEFINITIONS) $(O_MATERIALS) $(O_MESHES) $(O_QUALITIES): $(O)
 	mkdir -p $@
 
 install: all
-	cp -r $(O)/. $(PREFIX)/share/cura
+	cp -r $(O)/. $(PREFIX)
 
 clean:
 	$(RM) -r output
