@@ -10,7 +10,8 @@
         "category": "Other",
         "platform": "dagoma_discoeasy200_platform.stl",
         "file_formats": "text/x-gcode",
-        "has_machine_quality": true
+        "has_machine_quality": true,
+        "has_machine_material": true
     },
     "overrides": {
         "machine_name": {

@@ -119,6 +119,7 @@ def extract_definition(xmlroot):
                     'platform': definition_id + '_platform.stl',
                     'file_formats': 'text/x-gcode',
                     'has_machine_quality': True,
+                    'has_machine_material': True,
                 },
                 'overrides': o,
         }
