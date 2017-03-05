@@ -187,9 +187,30 @@ def extract_definition(xmlroot):
 
     return definition_data
 
+def _get_default_values(settings):
+    default_values = {}
+    for cat_key, cat_data in settings.items():
+        if 'default_value' in cat_data:
+            default_values[cat_key] = cat_data['default_value']
+        if 'children' in cat_data:
+            default_values.update(_get_default_values(cat_data['children']))
+    return default_values
+
+def _pp_definition(definition_data):
+    fdmprinter_settings = json.loads(open('misc/fdmprinter.def.json').read())['settings']
+    default_values = _get_default_values(fdmprinter_settings)
+
+    overrides = {}
+    for key, data in definition_data['overrides'].items():
+        if default_values[key] != data['default_value']:
+            overrides[key] = data
+    definition_data['overrides'] = overrides
+    return definition_data
+
 def _write_definition(xml_filename, output_filename):
     xmlroot = ET.parse(xml_filename)
     definition_data = extract_definition(xmlroot)
+    definition_data = _pp_definition(definition_data)
     json_data = json.dumps(definition_data, indent=4) + '\n'
     open(output_filename, 'w').write(json_data)
 
