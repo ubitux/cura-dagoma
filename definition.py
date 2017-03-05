@@ -204,6 +204,8 @@ def _pp_definition(definition_data):
     for key, data in definition_data['overrides'].items():
         if default_values[key] != data['default_value']:
             overrides[key] = data
+            if key not in ('machine_start_gcode', 'machine_end_gcode'):
+                print('{}: {} -> {}'.format(key, default_values[key], data['default_value']))
     definition_data['overrides'] = overrides
     return definition_data
 
