@@ -8,7 +8,7 @@ def _get_gcode_field(section, field_name):
     field_map = {
             # old name              new name
             '{print_temperature}': '{material_print_temperature}',
-            '{travel_speed}':      '{speed_travel}',
+            '{travel_speed}':      "' + str(speed_travel * 60) + '",
             '{z_offset}':          '0.5', # FIXME
     }
 
@@ -29,7 +29,7 @@ def _get_gcode_field(section, field_name):
 
         lines.append(line.strip())
 
-    return {'default_value': '\n'.join(lines)}
+    return {'value': "'%s'" % '\\n'.join(lines)}
 
 def _get_default_dict(xml_node, field_name, field_type=str):
     return {'default_value': field_type(xml_node.find(field_name).text)}
@@ -203,10 +203,12 @@ def _pp_definition(definition_data):
 
     overrides = {}
     for key, data in definition_data['overrides'].items():
+        if key in ('machine_start_gcode', 'machine_end_gcode'):
+            overrides[key] = data
+            continue
         if default_values[key] != data['default_value']:
             overrides[key] = data
-            if key not in ('machine_start_gcode', 'machine_end_gcode'):
-                print('{}: {} -> {}'.format(key, default_values[key], data['default_value']))
+            print('{}: {} -> {}'.format(key, default_values[key], data['default_value']))
     definition_data['overrides'] = overrides
     return definition_data
 
