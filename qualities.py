@@ -96,7 +96,7 @@ def _write_qualities(xml_filename, out_dir):
         for quality_id in cfgs:
             quality_data = qualities_data[quality_id].copy()
             quality_data['metadata']['material'] = material_id
-            printer = quality_data['general']['definition'].replace('dagoma_', '')
+            printer = quality_data['general']['definition']
             filename = '%s_%s_%s.inst.cfg' % (printer, material_id, quality_id)
             filename = os.path.join(out_dir, filename)
             print(filename)
