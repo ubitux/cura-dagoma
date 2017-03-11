@@ -43,7 +43,7 @@ def extract_qualities(xmlroot):
                 ('top_bottom_thickness',    float),         # solid_layer_thickness
                 ('wall_thickness',          float),
                 ('speed_print',             int),           # print_speed
-                #temp_preci                                 -> TODO
+                #temp_preci                                 # handled manually below
                 ('speed_travel',            int),           # travel_speed
                 ('speed_layer_0',           int),           # bottom_layer_speed
                 ('speed_infill',            int),           # infill_speed
@@ -62,6 +62,10 @@ def extract_qualities(xmlroot):
         for field, field_type in values_fields:
             dagoma_field = fields_map.get(field, field)
             values[field] = field_type(quality.find(dagoma_field).text)
+
+        temp_preci = int(quality.find('temp_preci').text)
+        if temp_preci:
+            values['material_print_temperature'] = '=default_material_print_temperature + %d' % temp_preci
 
         qualities_data[name_id] = {
                 'general': {
