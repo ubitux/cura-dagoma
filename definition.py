@@ -148,7 +148,7 @@ def extract_definition(xmlroot):
     section = xmlroot.find('Config_Expert')
     config_expert_fields = (
             ('retraction_min_travel',           float),
-            # retraction_combing                            -> TODO: changed type from bool to string
+            # retraction_combing                            -> see retraction_combing below
             # retraction_minimal_extrusion                  -> TODO: disabled setting?
             ('retraction_hop',                  int),       # XXX: doesn't retraction_hop_enabled needs to be set?
             ('skirt_line_count',                int),
@@ -190,6 +190,12 @@ def extract_definition(xmlroot):
         o['magic_mesh_surface_mode']['default_value'] = 'surface'
     else:
         o['magic_mesh_surface_mode']['default_value'] = 'normal'
+    o['retraction_combing'] = {}
+    if section.find('retraction_combing').text == 'False':
+        o['retraction_combing']['default_value'] = 'off'
+    else:
+        o['retraction_combing']['default_value'] = 'all'
+
 
     return definition_data
 
