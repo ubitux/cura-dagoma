@@ -129,6 +129,10 @@ def extract_definition(xmlroot):
 
     assert definition_data is not None
 
+    # FIXME: Hack until Cura figures out how to make print settings properly
+    # inherit from material settings.
+    o['material_diameter'] = {'default_value': 1.74}
+
     # Gcode
     gcode = xmlroot.find('GCODE')
     o['machine_start_gcode'] = _get_gcode_field(gcode, 'Gstart')
