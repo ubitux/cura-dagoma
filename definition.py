@@ -168,7 +168,7 @@ def extract_definition(xmlroot):
             ('support_xy_distance',             float),
             ('support_z_distance',              float),
             ('magic_spiralize',                 bool_eval), # spiralize
-            # simple_mode                                   -> TODO
+            # simple_mode                                   -> see magic_mesh_surface_mode below
             ('brim_line_count',                 int),
             ('raft_margin',                     int),
             # raft_line_spacing                             -> TODO: which of raft_*_line_spacing?
@@ -185,6 +185,11 @@ def extract_definition(xmlroot):
     )
     _extract_fields(o, section, config_expert_fields)
     o['cool_fan_speed']['maximum_value'] = section.find('fan_speed_max').text # expression, left as string
+    o['magic_mesh_surface_mode'] = {}
+    if section.find('simple_mode').text == 'True':
+        o['magic_mesh_surface_mode']['default_value'] = 'surface'
+    else:
+        o['magic_mesh_surface_mode']['default_value'] = 'normal'
 
     return definition_data
 
