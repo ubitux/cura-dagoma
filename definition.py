@@ -166,8 +166,8 @@ def extract_definition(xmlroot):
             # fan_speed_max                                 -> see cool_fan_speed/maximum_value below
             ('cool_min_speed',                  int),       # cool_min_feedrate
             ('cool_lift_head',                  bool_eval), # cool_head_lift
-            # solid_top                                     -> TODO: top_thickness in qualities?
-            # solid_bottom                                  -> TODO: bottom_thickness in qualities?
+            # solid_top                                     -> see qualities.py
+            # solid_bottom                                  -> see qualities.py
             ('infill_overlap',                  int),       # fill_overlap
             ('support_pattern',                 str_lower), # support_type
             ('support_angle', int),
