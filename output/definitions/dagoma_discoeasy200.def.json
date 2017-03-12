@@ -80,7 +80,7 @@
         "cool_min_speed": {
             "default_value": 20
         },
-        "skin_overlap": {
+        "infill_overlap": {
             "default_value": 25
         },
         "support_pattern": {
@@ -97,6 +97,15 @@
         },
         "raft_margin": {
             "default_value": 5
+        },
+        "raft_surface_line_spacing": {
+            "default_value": 3.0
+        },
+        "raft_interface_line_spacing": {
+            "default_value": 3.0
+        },
+        "raft_base_line_spacing": {
+            "default_value": 3.0
         },
         "raft_base_line_width": {
             "default_value": 1.0
