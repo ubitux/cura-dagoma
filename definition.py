@@ -47,7 +47,7 @@ def _extract_fields(dst, section, fields):
             'cool_lift_head':                   'cool_head_lift',
             'cool_min_speed':                   'cool_min_feedrate',
             'skirt_brim_minimal_length':        'skirt_minimal_length',
-            'skin_overlap':                     'fill_overlap',
+            'infill_overlap':                   'fill_overlap',
             'support_pattern':                  'support_type',
             'support_infill_rate':              'support_fill_rate',
             'magic_spiralize':                  'spiralize',
@@ -161,7 +161,7 @@ def extract_definition(xmlroot):
             ('cool_lift_head',                  bool_eval), # cool_head_lift
             # solid_top                                     -> TODO: top_thickness in qualities?
             # solid_bottom                                  -> TODO: bottom_thickness in qualities?
-            ('skin_overlap',                    int),       # fill_overlap / FIXME: infill_overlap?
+            ('infill_overlap',                  int),       # fill_overlap
             ('support_pattern',                 str_lower), # support_type
             ('support_angle', int),
             ('support_infill_rate',             int),       # support_fill_rate
