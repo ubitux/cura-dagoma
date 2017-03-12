@@ -205,24 +205,34 @@ def extract_definition(xmlroot):
     return definition_data
 
 def _get_default_values(settings):
+    values = {}
     default_values = {}
     for cat_key, cat_data in settings.items():
         if 'default_value' in cat_data:
             default_values[cat_key] = cat_data['default_value']
+        if 'value' in cat_data:
+            values[cat_key] = cat_data['value']
         if 'children' in cat_data:
-            default_values.update(_get_default_values(cat_data['children']))
-    return default_values
+            children_values, children_default_values = _get_default_values(cat_data['children'])
+            values.update(children_values)
+            default_values.update(children_default_values)
+    return values, default_values
 
 def _pp_definition(definition_data):
     fdmprinter_settings = json.loads(open('misc/fdmprinter.def.json').read())['settings']
-    default_values = _get_default_values(fdmprinter_settings)
+    values, default_values = _get_default_values(fdmprinter_settings)
 
     overrides = {}
     for key, data in definition_data['overrides'].items():
         if key in ('machine_start_gcode', 'machine_end_gcode'):
             overrides[key] = data
             continue
-        if default_values[key] != data['default_value']:
+        if key in values:
+            overrides[key] = data.copy()
+            overrides[key]['value'] = str(overrides[key]['default_value'])
+            del overrides[key]['default_value']
+            print('{}: {} -> {} (expression)'.format(key, values[key], overrides[key]['value']))
+        elif key in default_values and default_values[key] != data['default_value']:
             overrides[key] = data
             print('{}: {} -> {}'.format(key, default_values[key], data['default_value']))
     definition_data['overrides'] = overrides
