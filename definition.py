@@ -51,6 +51,9 @@ def _extract_fields(dst, section, fields):
             'support_pattern':                  'support_type',
             'support_infill_rate':              'support_fill_rate',
             'magic_spiralize':                  'spiralize',
+            'raft_surface_line_spacing':        'raft_line_spacing',
+            'raft_interface_line_spacing':      'raft_line_spacing',
+            'raft_base_line_spacing':           'raft_line_spacing',
             'raft_base_line_width':             'raft_base_linewidth',
             'raft_interface_line_width':        'raft_interface_linewidth',
             'meshfix_union_all':                'fix_horrible_union_all_type_a',
@@ -171,7 +174,9 @@ def extract_definition(xmlroot):
             # simple_mode                                   -> see magic_mesh_surface_mode below
             ('brim_line_count',                 int),
             ('raft_margin',                     int),
-            # raft_line_spacing                             -> TODO: which of raft_*_line_spacing?
+            ('raft_surface_line_spacing',       float),     # raft_line_spacing
+            ('raft_interface_line_spacing',     float),     # raft_line_spacing
+            ('raft_base_line_spacing',          float),     # raft_line_spacing
             ('raft_base_thickness',             float),
             ('raft_base_line_width',            float),     # raft_base_linewidth
             ('raft_interface_thickness',        float),
