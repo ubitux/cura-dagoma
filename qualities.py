@@ -22,8 +22,8 @@ def extract_qualities(xmlroot):
     qualities = xmlroot.find('Bloc_Precision')
     for quality in qualities.findall('Precision'):
 
-        name = quality.attrib['name']
-        name_id = name.split(maxsplit=1)[0].lower()
+        name = quality.attrib['name'].split(maxsplit=1)[0]
+        name_id = name.lower()
         assert name_id not in ('rapide', 'fin') # french profiles not supported
 
         name_remap = {'standard': 'normal', 'thin': 'high'}
