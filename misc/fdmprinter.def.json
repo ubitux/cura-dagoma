@@ -93,7 +93,6 @@
                     "description": "Whether to wait until the nozzle temperature is reached at the start.",
                     "default_value": true,
                     "type": "bool",
-                    "enabled": "machine_nozzle_temp_enabled",
                     "settable_per_mesh": false,
                     "settable_per_extruder": false,
                     "settable_per_meshgroup": false
@@ -104,7 +103,6 @@
                     "description": "Whether to include nozzle temperature commands at the start of the gcode. When the start_gcode already contains nozzle temperature commands Cura frontend will automatically disable this setting.",
                     "default_value": true,
                     "type": "bool",
-                    "enabled": "machine_nozzle_temp_enabled",
                     "settable_per_mesh": false,
                     "settable_per_extruder": false,
                     "settable_per_meshgroup": false
@@ -221,11 +219,8 @@
                 {
                     "label": "Nozzle angle",
                     "description": "The angle between the horizontal plane and the conical part right above the tip of the nozzle.",
-                    "unit": "°",
-                    "type": "int",
                     "default_value": 45,
-                    "maximum_value": "89",
-                    "minimum_value": "1",
+                    "type": "int",
                     "settable_per_mesh": false,
                     "settable_per_extruder": false,
                     "settable_per_meshgroup": false
@@ -251,17 +246,6 @@
                     "settable_per_extruder": true,
                     "settable_per_meshgroup": false
                 },
-                "machine_nozzle_temp_enabled":
-                {
-                    "label": "Enable Nozzle Temperature Control",
-                    "description": "Whether to control temperature from Cura. Turn this off to control nozzle temperature from outside of Cura.",
-                    "default_value": true,
-                    "value": "machine_gcode_flavor != \"UltiGCode\"",
-                    "type": "bool",
-                    "settable_per_mesh": false,
-                    "settable_per_extruder": true,
-                    "settable_per_meshgroup": false
-                },
                 "machine_nozzle_heat_up_speed":
                 {
                     "label": "Heat up speed",
@@ -269,7 +253,6 @@
                     "default_value": 2.0,
                     "unit": "°C/s",
                     "type": "float",
-                    "enabled": "machine_nozzle_temp_enabled",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -280,7 +263,6 @@
                     "default_value": 2.0,
                     "unit": "°C/s",
                     "type": "float",
-                    "enabled": "machine_nozzle_temp_enabled",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -291,7 +273,6 @@
                     "default_value": 50.0,
                     "unit": "s",
                     "type": "float",
-                    "enabled": "machine_nozzle_temp_enabled",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -634,7 +615,7 @@
                     "label": "Line Width",
                     "description": "Width of a single line. Generally, the width of each line should correspond to the width of the nozzle. However, slightly reducing this value could produce better prints.",
                     "unit": "mm",
-                    "minimum_value": "0.001",
+                    "minimum_value": "0.0001",
                     "minimum_value_warning": "0.5 * machine_nozzle_size",
                     "maximum_value_warning": "2 * machine_nozzle_size",
                     "default_value": 0.4,
@@ -648,7 +629,7 @@
                             "label": "Wall Line Width",
                             "description": "Width of a single wall line.",
                             "unit": "mm",
-                            "minimum_value": "0.001",
+                            "minimum_value": "0.0001",
                             "minimum_value_warning": "0.75 * machine_nozzle_size",
                             "maximum_value_warning": "2 * machine_nozzle_size",
                             "value": "line_width",
@@ -662,7 +643,7 @@
                                     "label": "Outer Wall Line Width",
                                     "description": "Width of the outermost wall line. By lowering this value, higher levels of detail can be printed.",
                                     "unit": "mm",
-                                    "minimum_value": "0.001",
+                                    "minimum_value": "0.0001",
                                     "minimum_value_warning": "0.75 * machine_nozzle_size if outer_inset_first else 0.1 * machine_nozzle_size",
                                     "maximum_value_warning": "2 * machine_nozzle_size",
                                     "default_value": 0.4,
@@ -675,7 +656,7 @@
                                     "label": "Inner Wall(s) Line Width",
                                     "description": "Width of a single wall line for all wall lines except the outermost one.",
                                     "unit": "mm",
-                                    "minimum_value": "0.001",
+                                    "minimum_value": "0.0001",
                                     "minimum_value_warning": "0.5 * machine_nozzle_size",
                                     "maximum_value_warning": "2 * machine_nozzle_size",
                                     "default_value": 0.4,
@@ -690,7 +671,7 @@
                             "label": "Top/Bottom Line Width",
                             "description": "Width of a single top/bottom line.",
                             "unit": "mm",
-                            "minimum_value": "0.001",
+                            "minimum_value": "0.0001",
                             "minimum_value_warning": "0.1 * machine_nozzle_size",
                             "maximum_value_warning": "2 * machine_nozzle_size",
                             "default_value": 0.4,
@@ -703,7 +684,7 @@
                             "label": "Infill Line Width",
                             "description": "Width of a single infill line.",
                             "unit": "mm",
-                            "minimum_value": "0.001",
+                            "minimum_value": "0.0001",
                             "minimum_value_warning": "0.75 * machine_nozzle_size",
                             "maximum_value_warning": "3 * machine_nozzle_size",
                             "default_value": 0.4,
@@ -717,7 +698,7 @@
                             "label": "Skirt/Brim Line Width",
                             "description": "Width of a single skirt or brim line.",
                             "unit": "mm",
-                            "minimum_value": "0.001",
+                            "minimum_value": "0.0001",
                             "minimum_value_warning": "0.75 * machine_nozzle_size",
                             "maximum_value_warning": "3 * machine_nozzle_size",
                             "default_value": 0.4,
@@ -732,7 +713,7 @@
                             "label": "Support Line Width",
                             "description": "Width of a single support structure line.",
                             "unit": "mm",
-                            "minimum_value": "0.001",
+                            "minimum_value": "0.0001",
                             "minimum_value_warning": "0.75 * machine_nozzle_size",
                             "maximum_value_warning": "3 * machine_nozzle_size",
                             "default_value": 0.4,
@@ -749,7 +730,7 @@
                             "description": "Width of a single support interface line.",
                             "unit": "mm",
                             "default_value": 0.4,
-                            "minimum_value": "0.001",
+                            "minimum_value": "0.0001",
                             "minimum_value_warning": "0.4 * machine_nozzle_size",
                             "maximum_value_warning": "2 * machine_nozzle_size",
                             "type": "float",
@@ -768,7 +749,7 @@
                             "enabled": "resolveOrValue('prime_tower_enable')",
                             "default_value": 0.4,
                             "value": "line_width",
-                            "minimum_value": "0.001",
+                            "minimum_value": "0.0001",
                             "minimum_value_warning": "0.75 * machine_nozzle_size",
                             "maximum_value_warning": "2 * machine_nozzle_size",
                             "settable_per_mesh": false,
@@ -907,30 +888,6 @@
                         "zigzag": "Zig Zag"
                     },
                     "default_value": "lines",
-                    "settable_per_mesh": true
-                },
-                "top_bottom_pattern_0":
-                {
-                    "label": "Bottom Pattern Initial Layer",
-                    "description": "The pattern on the bottom of the print on the first layer.",
-                    "type": "enum",
-                    "options":
-                    {
-                        "lines": "Lines",
-                        "concentric": "Concentric",
-                        "zigzag": "Zig Zag"
-                    },
-                    "default_value": "lines",
-                    "value": "top_bottom_pattern",
-                    "settable_per_mesh": true
-                },
-                "skin_angles":
-                {
-                    "label": "Top/Bottom Line Directions",
-                    "description": "A list of integer line directions to use when the top/bottom layers use the lines or zig zag pattern. Elements from the list are used sequentially as the layers progress and when the end of the list is reached, it starts at the beginning again. The list items are separated by commas and the whole list is contained in square brackets. Default is an empty list which means use the traditional default angles (45 and 135 degrees).",
-                    "type": "[int]",
-                    "default_value": "[ ]",
-                    "enabled": "top_bottom_pattern != 'concentric'",
                     "settable_per_mesh": true
                 },
                 "wall_0_inset":
@@ -1114,15 +1071,6 @@
                     "value": "'lines' if infill_sparse_density > 25 else 'grid'",
                     "settable_per_mesh": true
                 },
-                "infill_angles":
-                {
-                    "label": "Infill Line Directions",
-                    "description": "A list of integer line directions to use. Elements from the list are used sequentially as the layers progress and when the end of the list is reached, it starts at the beginning again. The list items are separated by commas and the whole list is contained in square brackets. Default is an empty list which means use the traditional default angles (45 and 135 degrees for the lines and zig zag patterns and 45 degrees for all other patterns).",
-                    "type": "[int]",
-                    "default_value": "[ ]",
-                    "enabled": "infill_pattern != 'concentric' and infill_pattern != 'concentric_3d' and infill_pattern != 'cubicsubdiv'",
-                    "settable_per_mesh": true
-                },
                 "sub_div_rad_mult":
                 {
                     "label": "Cubic Subdivision Radius",
@@ -1267,85 +1215,6 @@
                     "default_value": true,
                     "enabled": "infill_sparse_density > 0",
                     "settable_per_mesh": true
-                },
-                "min_infill_area":
-                {
-                    "label": "Minimum Infill Area",
-                    "description": "Don't generate areas of infill smaller than this (use skin instead).",
-                    "unit": "mm²",
-                    "type": "float",
-                    "minimum_value": "0",
-                    "default_value": 0,
-                    "settable_per_mesh": true
-                },
-                "expand_skins_into_infill":
-                {
-                    "label": "Expand Skins Into Infill",
-                    "description": "Expand skin areas of top and/or bottom skin of flat surfaces. By default, skins stop under the wall lines that surround infill but this can lead to holes appearing when the infill density is low. This setting extends the skins beyond the wall lines so that the infill on the next layer rests on skin.",
-                    "type": "bool",
-                    "default_value": false,
-                    "settable_per_mesh": true,
-                    "children":
-                    {
-                        "expand_upper_skins":
-                        {
-                            "label": "Expand Upper Skins",
-                            "description": "Expand upper skin areas (areas with air above) so that they support infill above.",
-                            "type": "bool",
-                            "default_value": false,
-                            "value": "expand_skins_into_infill",
-                            "settable_per_mesh": true
-                        },
-                        "expand_lower_skins":
-                        {
-                            "label": "Expand Lower Skins",
-                            "description": "Expand lower skin areas (areas with air below) so that they are anchored by the infill layers above and below.",
-                            "type": "bool",
-                            "default_value": false,
-                            "settable_per_mesh": true
-                        }
-                    }
-                },
-                "expand_skins_expand_distance":
-                {
-                    "label": "Skin Expand Distance",
-                    "description": "The distance the skins are expanded into the infill. The default distance is enough to bridge the gap between the infill lines and will stop holes appearing in the skin where it meets the wall when the infill density is low. A smaller distance will often be sufficient.",
-                    "unit": "mm",
-                    "type": "float",
-                    "default_value": 2.8,
-                    "value": "infill_line_distance * 1.4",
-                    "minimum_value": "0",
-                    "enabled": "expand_upper_skins or expand_lower_skins",
-                    "settable_per_mesh": true
-                },
-                "max_skin_angle_for_expansion":
-                {
-                    "label": "Maximum Skin Angle for Expansion",
-                    "description": "Top and or bottom surfaces of your object with an angle larger than this setting, won't have their top/bottom skin expanded. This avoids expanding the narrow skin areas that are created when the model surface has a near vertical slope. An angle of 0° is horizontal, while an angle of 90° is vertical.",
-                    "unit": "°",
-                    "type": "float",
-                    "minimum_value": "0",
-                    "minimum_value_warning": "2",
-                    "maximum_value_warning": "45",
-                    "maximum_value": "90",
-                    "default_value": 20,
-                    "enabled": "expand_upper_skins or expand_lower_skins",
-                    "settable_per_mesh": true,
-                    "children":
-                    {
-                        "min_skin_width_for_expansion":
-                        {
-                            "label": "Minimum Skin Width for Expansion",
-                            "description": "Skin areas narrower than this are not expanded. This avoids expanding the narrow skin areas that are created when the model surface has a slope close to the vertical.",
-                            "unit": "mm",
-                            "type": "float",
-                            "default_value": 2.24,
-                            "value": "top_layers * layer_height / math.tan(math.radians(max_skin_angle_for_expansion))",
-                            "minimum_value": "0",
-                            "enabled": "expand_upper_skins or expand_lower_skins",
-                            "settable_per_mesh": true
-                        }
-                    }
                 }
             }
         },
@@ -1363,7 +1232,7 @@
                     "description": "Change the temperature for each layer automatically with the average flow speed of that layer.",
                     "type": "bool",
                     "default_value": false,
-                    "enabled": "machine_nozzle_temp_enabled and False",
+                    "enabled": "False",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -1374,24 +1243,22 @@
                     "unit": "°C",
                     "type": "float",
                     "default_value": 210,
-                    "minimum_value_warning": "0",
-                    "maximum_value_warning": "285",
-                    "enabled": "machine_nozzle_temp_enabled",
+                    "enabled": false,
                     "settable_per_extruder": true,
                     "minimum_value": "-273.15"
                 },
                 "material_print_temperature":
                 {
                     "label": "Printing Temperature",
-                    "description": "The temperature used for printing.",
+                    "description": "The temperature used for printing. Set at 0 to pre-heat the printer manually.",
                     "unit": "°C",
                     "type": "float",
                     "default_value": 210,
                     "value": "default_material_print_temperature",
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "0",
-                    "maximum_value_warning": "285",
-                    "enabled": "machine_nozzle_temp_enabled and not (material_flow_dependent_temperature)",
+                    "maximum_value_warning": "260",
+                    "enabled": "not (material_flow_dependent_temperature) and machine_gcode_flavor != \"UltiGCode\"",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -1402,11 +1269,11 @@
                     "unit": "°C",
                     "type": "float",
                     "default_value": 215,
-                    "value": "material_print_temperature",
+                    "value": "material_print_temperature + 5",
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "0",
-                    "maximum_value_warning": "285",
-                    "enabled": "machine_nozzle_temp_enabled",
+                    "maximum_value_warning": "260",
+                    "enabled": "machine_gcode_flavor != \"UltiGCode\"",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -1421,7 +1288,7 @@
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "material_standby_temperature",
                     "maximum_value_warning": "material_print_temperature",
-                    "enabled": "machine_nozzle_temp_enabled",
+                    "enabled": "machine_gcode_flavor != \"UltiGCode\"",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -1436,7 +1303,7 @@
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "material_standby_temperature",
                     "maximum_value_warning": "material_print_temperature",
-                    "enabled": "machine_nozzle_temp_enabled",
+                    "enabled": "machine_gcode_flavor != \"UltiGCode\"",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -1447,7 +1314,8 @@
                     "unit": "[[mm³,°C]]",
                     "type": "str",
                     "default_value": "[[3.5,200],[7.0,240]]",
-                    "enabled": "False and machine_nozzle_temp_enabled and material_flow_dependent_temperature",
+                    "enabled": "False",
+                    "comments": "old enabled function: material_flow_dependent_temperature",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -1461,21 +1329,22 @@
                     "minimum_value": "0",
                     "maximum_value_warning": "10.0",
                     "maximum_value": "machine_nozzle_heat_up_speed",
-                    "enabled": "material_flow_dependent_temperature or (machine_extruder_count > 1 and material_final_print_temperature != material_print_temperature)",
+                    "enabled": "False",
+                    "comments": "old enabled function: material_flow_dependent_temperature or machine_extruder_count > 1",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
                 "material_bed_temperature":
                 {
                     "label": "Build Plate Temperature",
-                    "description": "The temperature used for the heated build plate. If this is 0, the bed will not heat up for this print.",
+                    "description": "The temperature used for the heated build plate. Set at 0 to pre-heat the printer manually.",
                     "unit": "°C",
                     "type": "float",
                     "resolve": "max(extruderValues('material_bed_temperature'))",
                     "default_value": 60,
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "0",
-                    "maximum_value_warning": "130",
+                    "maximum_value_warning": "260",
                     "enabled": "machine_heated_bed and machine_gcode_flavor != \"UltiGCode\"",
                     "settable_per_mesh": false,
                     "settable_per_extruder": false,
@@ -1492,7 +1361,7 @@
                     "value": "resolveOrValue('material_bed_temperature')",
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "max(extruderValues('material_bed_temperature'))",
-                    "maximum_value_warning": "130",
+                    "maximum_value_warning": "260",
                     "enabled": "machine_heated_bed and machine_gcode_flavor != \"UltiGCode\"",
                     "settable_per_mesh": false,
                     "settable_per_extruder": false,
@@ -1668,7 +1537,7 @@
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "0",
                     "maximum_value_warning": "260",
-                    "enabled": "machine_extruder_count > 1 and machine_nozzle_temp_enabled",
+                    "enabled": "machine_extruder_count > 1 and machine_gcode_flavor != \"UltiGCode\"",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true
                 },
@@ -2521,16 +2390,6 @@
                     "settable_per_mesh": false,
                     "settable_per_extruder": false
                 },
-                "travel_retract_before_outer_wall":
-                {
-                    "label": "Retract Before Outer Wall",
-                    "description": "Always retract when moving to start an outer wall.",
-                    "type": "bool",
-                    "default_value": false,
-                    "enabled": "retraction_enable",
-                    "settable_per_mesh": false,
-                    "settable_per_extruder": false
-                },
                 "travel_avoid_other_parts":
                 {
                     "label": "Avoid Printed Parts When Traveling",
@@ -2941,7 +2800,7 @@
                 "support_z_distance":
                 {
                     "label": "Support Z Distance",
-                    "description": "Distance from the top/bottom of the support structure to the print. This gap provides clearance to remove the supports after the model is printed. This value is rounded up to a multiple of the layer height.",
+                    "description": "Distance from the top/bottom of the support structure to the print. This gap provides clearance to remove the supports after the model is printed. This value is rounded down to a multiple of the layer height.",
                     "unit": "mm",
                     "type": "float",
                     "minimum_value": "0",
@@ -3254,8 +3113,8 @@
                     "type": "float",
                     "unit": "mm",
                     "default_value": 0,
-                    "minimum_value_warning": "machine_width / -2 if machine_center_is_zero else 0",
-                    "maximum_value_warning": "machine_width / 2 if machine_center_is_zero else machine_width",
+                    "minimum_value_warning": "0",
+                    "maximum_value_warning": "machine_width",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true,
                     "enabled": false
@@ -3267,8 +3126,8 @@
                     "type": "float",
                     "unit": "mm",
                     "default_value": 0,
-                    "minimum_value_warning": "machine_depth / -2 if machine_center_is_zero else 0",
-                    "maximum_value_warning": "machine_depth / 2 if machine_center_is_zero else machine_depth",
+                    "minimum_value_warning": "0",
+                    "maximum_value_warning": "machine_depth",
                     "settable_per_mesh": false,
                     "settable_per_extruder": true,
                     "enabled": false
@@ -3463,7 +3322,7 @@
                     "type": "float",
                     "default_value": 0.4,
                     "value": "line_width",
-                    "minimum_value": "0.001",
+                    "minimum_value": "0.0001",
                     "minimum_value_warning": "extruderValue(adhesion_extruder_nr, 'machine_nozzle_size') * 0.1",
                     "maximum_value_warning": "extruderValue(adhesion_extruder_nr, 'machine_nozzle_size') * 2",
                     "enabled": "resolveOrValue('adhesion_type') == 'raft'",
@@ -3478,7 +3337,7 @@
                     "unit": "mm",
                     "type": "float",
                     "default_value": 0.4,
-                    "minimum_value": "0",
+                    "minimum_value": "0.0001",
                     "minimum_value_warning": "extruderValue(adhesion_extruder_nr, 'raft_surface_line_width')",
                     "maximum_value_warning": "extruderValue(adhesion_extruder_nr, 'raft_surface_line_width') * 3",
                     "enabled": "resolveOrValue('adhesion_type') == 'raft'",
@@ -3511,7 +3370,7 @@
                     "type": "float",
                     "default_value": 0.7,
                     "value": "line_width * 2",
-                    "minimum_value": "0.001",
+                    "minimum_value": "0.0001",
                     "minimum_value_warning": "extruderValue(adhesion_extruder_nr, 'machine_nozzle_size') * 0.5",
                     "maximum_value_warning": "extruderValue(adhesion_extruder_nr, 'machine_nozzle_size') * 3",
                     "enabled": "resolveOrValue('adhesion_type') == 'raft'",
@@ -3558,7 +3417,7 @@
                     "unit": "mm",
                     "type": "float",
                     "default_value": 0.8,
-                    "minimum_value": "0.001",
+                    "minimum_value": "0.0001",
                     "value": "extruderValue(adhesion_extruder_nr, 'machine_nozzle_size') * 2",
                     "minimum_value_warning": "extruderValue(adhesion_extruder_nr, 'machine_nozzle_size') * 0.5",
                     "maximum_value_warning": "extruderValue(adhesion_extruder_nr, 'machine_nozzle_size') * 3",
@@ -3575,7 +3434,7 @@
                     "type": "float",
                     "default_value": 1.6,
                     "value": "raft_base_line_width * 2",
-                    "minimum_value": "0",
+                    "minimum_value": "0.0001",
                     "minimum_value_warning": "extruderValue(adhesion_extruder_nr, 'raft_base_line_width')",
                     "maximum_value_warning": "100",
                     "enabled": "resolveOrValue('adhesion_type') == 'raft'",
@@ -3896,7 +3755,7 @@
                             "unit": "mm",
                             "type": "float",
                             "default_value": 2,
-                            "value": "round(max(2 * min(extruderValues('prime_tower_line_width')), 0.5 * (resolveOrValue('prime_tower_size') - math.sqrt(max(0, resolveOrValue('prime_tower_size') ** 2 - max(extruderValues('prime_tower_min_volume')) / resolveOrValue('layer_height'))))), 3)",
+                            "value": "max(2 * min(extruderValues('prime_tower_line_width')), 0.5 * (resolveOrValue('prime_tower_size') - math.sqrt(max(0, resolveOrValue('prime_tower_size') ** 2 - max(extruderValues('prime_tower_min_volume')) / resolveOrValue('layer_height')))))",
                             "resolve": "max(extruderValues('prime_tower_wall_thickness'))",
                             "minimum_value": "0.001",
                             "minimum_value_warning": "2 * min(extruderValues('prime_tower_line_width'))",
@@ -3917,8 +3776,8 @@
                     "default_value": 200,
                     "minimum_value_warning": "-1000",
                     "maximum_value_warning": "1000",
-                    "maximum_value": "machine_width / 2 if machine_center_is_zero else machine_width",
-                    "minimum_value": "resolveOrValue('prime_tower_size') - machine_width / 2 if machine_center_is_zero else resolveOrValue('prime_tower_size')",
+                    "maximum_value": "machine_width",
+                    "minimum_value": "resolveOrValue('prime_tower_size')",
                     "settable_per_mesh": false,
                     "settable_per_extruder": false
                 },
@@ -3932,8 +3791,8 @@
                     "default_value": 200,
                     "minimum_value_warning": "-1000",
                     "maximum_value_warning": "1000",
-                    "maximum_value": "machine_depth / 2 - resolveOrValue('prime_tower_size') if machine_center_is_zero else machine_depth - resolveOrValue('prime_tower_size')",
-                    "minimum_value": "machine_depth / -2 if machine_center_is_zero else 0",
+                    "maximum_value": "machine_depth - resolveOrValue('prime_tower_size')",
+                    "minimum_value": "0",
                     "settable_per_mesh": false,
                     "settable_per_extruder": false
                 },
@@ -3945,7 +3804,6 @@
                     "unit": "%",
                     "enabled": "resolveOrValue('prime_tower_enable')",
                     "default_value": 100,
-                    "value": "material_flow",
                     "minimum_value": "0.0001",
                     "minimum_value_warning": "50",
                     "maximum_value_warning": "150",
