@@ -183,9 +183,10 @@ def extract_definition(xmlroot):
             # simple_mode                                   -> see magic_mesh_surface_mode below
             ('brim_line_count',                 int),
             ('raft_margin',                     int),
-            ('raft_surface_line_spacing',       float),     # raft_line_spacing
-            ('raft_interface_line_spacing',     float),     # raft_line_spacing
-            ('raft_base_line_spacing',          float),     # raft_line_spacing
+            # FIXME:
+            #('raft_surface_line_spacing',       float),     # raft_line_spacing
+            #('raft_interface_line_spacing',     float),     # raft_line_spacing
+            #('raft_base_line_spacing',          float),     # raft_line_spacing
             ('raft_base_thickness',             float),
             ('raft_base_line_width',            float),     # raft_base_linewidth
             ('raft_interface_thickness',        float),
