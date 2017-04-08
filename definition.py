@@ -20,6 +20,11 @@ def _get_gcode_field(section, field_name):
         # drop comment lines which generally contains deprecated,
         # inexistant variables or unrelated garbage
         line = line.strip()
+
+        if line.startswith(';{palpeur}'):
+            lines.append('G29')
+            continue
+
         if not line or line[0] == ';':
             continue
 
